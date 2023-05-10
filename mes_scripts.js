@@ -18,3 +18,10 @@ function add(){
     x = x+1;
     alert(x);
 }
+
+
+function verif(){
+  const test = document.querySelector('input').value;
+  alert("intru");
+}
+  
