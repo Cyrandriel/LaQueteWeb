@@ -21,7 +21,13 @@ function add(){
 
 
 function verif(){
-  const test = document.querySelector('input').value;
-  alert("intru");
+  let test = document.querySelector('input').value;
+
+  if(test == ""){
+    alert("intr");
+  }else{
+    alert("fun");
+  }
+
 }
   
