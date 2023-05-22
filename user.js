@@ -1,2 +1,0 @@
-//Easy normal hard
-//maps

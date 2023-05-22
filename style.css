@@ -1,5 +1,56 @@
 #d1{background-color: #EECC4499;}
 #d2{background-color: #44EEAA99;}
-.h1{
-    color: blue;
+h1{
+    color: rgb(46, 10, 10);
+    font-family: Verdana;
+}
+.bloc{
+    background-color: rgba(0, 0, 0, 0.315);
+    margin: 2em;
+    padding: 2em;
+    text-align: center;
+
+}
+.img_donjon{
+    height: 25em;
+}
+.img_minidonjon{
+    height: 10em;
+}
+.img_monstre{
+    height: 15em;
+}
+
+body{
+    background-color: rgb(150, 124, 117);
+}
+
+.bouton_jouer, .bouton_regles, .bouton_retour{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 10px 20px 10px 20px ;
+    font-size: 1.5em;
+    color: rgb(191, 77, 77);
+    background-color: rgb(243, 241, 163);
+    border-radius: 0.5em;
+    
+}
+.bouton_jouer:active, .bouton_regles:active, .bouton_retour:active{
+    background-color: rgb(159, 113, 113);
+    color: rgb(125, 125, 125);
+}
+
+.dep, .com{
+    padding: 5px 10px 5px 10px ;
+    font-size: 1em;
+    background-color: rgb(171, 171, 171);
+    color: rgb(20, 20, 20);
+    border-radius: 0.5em;
+}
+.bouton_jouer:hover, .bouton_regles:hover, .bouton_retour:hover, .dep:hover, .com:hover{
+    color: rgb(255, 255, 255);
+}
+.dep:active, .com:active{
+    background-color: rgb(255, 255, 255);
+    color: rgb(88, 88, 88);
 }
