@@ -82,44 +82,26 @@ function getNiveau(){
 
 var gemme_maudite = "maudite";
 var gemme_attaque = "attaque";
+
 var liste_bourse = [gemme_maudite, gemme_maudite, gemme_maudite, gemme_maudite, gemme_attaque, gemme_attaque, gemme_attaque];
 
-function combat(liste_bourse) {
+function combat() {
   document.getElementById('attaque').style.display = 'block';
   document.getElementById('quefaire').style.display = 'none';
   document.getElementById('niveau').innerHTML = niveau_monstre;
-  var nombre = Math.floor(Math.random() * 5);
+  var nombre = Math.floor(Math.random() * liste_bourse.length)+1;
 
   document.getElementById('pioche').innerHTML = nombre;
   if(nombre >= niveau_monstre){
     document.getElementById('resultat_combat').innerHTML = 'Vous gagnez';
-    liste_bourse.push(gemme_attaque);
+    liste_bourse.push("attaque");
+    afficher_bourse(liste_bourse);
   }else{
     document.getElementById('resultat_combat').innerHTML = 'Vous perdez';
-    liste_bourse.push( gemme_maudite);
+    liste_bourse.unshift("maudite");
+    afficher_bourse(liste_bourse);
   }
 
-  
-}
-
-
-
-
-function pioche(liste_bourse, niveau_monstre){
-  bloque = 0;
-  valide = 0;
-  var place;
-  do {
-    place = aleatoire()-1;
-    if(liste_bourse.get(place) === gemme_attaque)
-      valide = valide + 1;
-    else{
-      bloque = bloque + 1;
-    }
-    
-  } while (bloque<5 || valide < niveau_monstre);
-  
-  return valide;
 }
 
 
