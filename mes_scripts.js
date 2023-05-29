@@ -51,7 +51,6 @@ function dep_haut(){
     document.getElementById("pos_etage").innerHTML = etage;
     
     getNiveau();
-    //window.location.href = "./quest_regles.html";
   }else
     alert("Deplacement impossible")
 }
@@ -70,45 +69,37 @@ function aleatoire() {
   return Math.floor(Math.random() * 5)+1;
 }
 
-const button = document.getElementById('bouton_attaque');
-var niveau_monstre;
+var etage_tresor = Math.floor(Math.random() * 5)+1;
+var salle_tresor = Math.floor(Math.random() * 3)+1;
 
+var niveau_monstre;
+var tour = 0;
+var tresor_trouve = false
 function getNiveau(){
+  tour = tour + 1;
+  if(tour === 24){
+    window.location.href = "./quest_echec.html";
+  }
+  document.getElementById('tour').innerHTML = tour;
   load();
   niveau_monstre = aleatoire();
   document.getElementById('niveau').innerHTML = niveau_monstre;
-  afficher_bourse();
 }
-
-var gemme_maudite = "maudite";
-var gemme_attaque = "attaque";
-
-var liste_bourse = [gemme_maudite, gemme_maudite, gemme_maudite, gemme_maudite, gemme_attaque, gemme_attaque, gemme_attaque];
 
 function combat() {
   document.getElementById('attaque').style.display = 'block';
   document.getElementById('quefaire').style.display = 'none';
   document.getElementById('niveau').innerHTML = niveau_monstre;
-  var nombre = Math.floor(Math.random() * liste_bourse.length)+1;
-
-  document.getElementById('pioche').innerHTML = nombre;
-  if(nombre >= niveau_monstre){
+  var de = Math.floor(Math.random() * 6)+1;
+  document.getElementById('lance_de').innerHTML = de;
+  if(de >= niveau_monstre){
     document.getElementById('resultat_combat').innerHTML = 'Vous gagnez';
-    liste_bourse.push("attaque");
-    afficher_bourse(liste_bourse);
+    if(salle == salle_tresor && etage == etage_tresor){
+      tresor_trouve = true;
+      window.location.href = "./quest_victoire.html";
+    }
   }else{
     document.getElementById('resultat_combat').innerHTML = 'Vous perdez';
-    liste_bourse.unshift("maudite");
-    afficher_bourse(liste_bourse);
   }
-
-}
-
-
-function afficher_bourse(){
-  var texte = "";
-  liste_bourse.forEach(element => {
-    texte = texte + element + ", ";
-  });
-  document.getElementById("bourse").innerHTML = texte;
+  afficher_bourse(liste_bourse);
 }

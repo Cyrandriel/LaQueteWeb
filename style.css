@@ -42,17 +42,20 @@ body{
     color: rgb(125, 125, 125);
 }
 
-.dep, .com{
+.dep, .com, .bouton_menu{
     padding: 5px 10px 5px 10px ;
     font-size: 1em;
     background-color: rgb(171, 171, 171);
     color: rgb(20, 20, 20);
     border-radius: 0.5em;
 }
-.bouton_jouer:hover, .bouton_regles:hover, .bouton_retour:hover, .dep:hover, .com:hover{
+.bouton_jouer:hover, .bouton_regles:hover, .bouton_retour:hover, .dep:hover, .com:hover,.bouton_menu:hover{
     color: rgb(255, 255, 255);
 }
-.dep:active, .com:active{
+.dep:active, .com:active, .bouton_menu:active{
     background-color: rgb(255, 255, 255);
     color: rgb(88, 88, 88);
+}
+.bouton_menu{
+    margin: 1em;
 }
