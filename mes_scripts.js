@@ -1,16 +1,20 @@
+var tour = 1
+
 function load(){
+  document.getElementById('tour').innerHTML = tour;
   if (document.getElementById('combat').style.display == 'none'){
     document.getElementById('combat').style.display = 'block';
     document.getElementById('jeu').style.display = 'none';
     document.getElementById('attaque').style.display = 'none';
   }
   else{
+    if(tour === 21){
+      window.location.href = "./quest_echec.html";
+    }
     document.getElementById('combat').style.display = 'none';
     document.getElementById('jeu').style.display = 'block';
     document.getElementById('attaque').style.display = 'none';
-    
     document.getElementById("quefaire").style.display = 'block';
-    
   }
 }
 // LES DEPLACEMENTS
@@ -73,17 +77,13 @@ var etage_tresor = Math.floor(Math.random() * 5)+1;
 var salle_tresor = Math.floor(Math.random() * 3)+1;
 
 var niveau_monstre;
-var tour = 0;
 var tresor_trouve = false
 function getNiveau(){
   tour = tour + 1;
-  if(tour === 24){
-    window.location.href = "./quest_echec.html";
-  }
-  document.getElementById('tour').innerHTML = tour;
   load();
   niveau_monstre = aleatoire();
   document.getElementById('niveau').innerHTML = niveau_monstre;
+  
 }
 
 function combat() {
@@ -101,5 +101,4 @@ function combat() {
   }else{
     document.getElementById('resultat_combat').innerHTML = 'Vous perdez';
   }
-  afficher_bourse(liste_bourse);
 }

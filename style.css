@@ -1,6 +1,7 @@
 
 h1{
     color: rgb(46, 10, 10);
+    padding: 1em;
     font-family: Verdana;
     font-weight: bold;
     font-size: 2.5em;
@@ -13,8 +14,8 @@ h1{
 
 }
 
-.img_donjon{
-    height: 25em;
+.img_donjon, .img_final{
+    height: 20em;
 }
 .img_minidonjon{
     height: 10em;
@@ -57,5 +58,13 @@ body{
     color: rgb(88, 88, 88);
 }
 .bouton_menu{
-    margin: 1em;
+    margin: 0.5em;
+}
+.haut{
+    margin-top: 2em;
+}
+body{
+    font-family: Verdana;
+    font-size: 1em;
+    color: rgb(45, 13, 13);
 }

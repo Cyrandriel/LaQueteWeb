@@ -14,10 +14,11 @@
 <body onload="load()">
     <div id="jeu">
         <div class="bloc">
-            <p>Vous etes dans le jeu</p>
+            <p>Vous etes dans le jeu <br></p>
+            <p>tour <span id='tour'></span></p>
             <p>Tu es dans la salle <span id="pos_salle">centre</span> à l'étage <span id="pos_etage">1</span></p>
 
-            <button class="dep" onclick="dep_haut()">haut</button><br>
+            <button class="dep haut" onclick="dep_haut()">haut</button><br>
             <button class="dep" onclick="dep_gauche()">gauche</button>
             <button class="dep" onclick="getNiveau()">immobile</button>
             <button class="dep" onclick="dep_droite()">droite</button><br>
@@ -26,21 +27,21 @@
     </div>
     <div id="combat">
         <div class="bloc">
-            <p>tour <span id='tour'></span></p>
+            
             <img src="./images/monstre.png" alt="monstre" class="img_monstre">
             <p>Vous tombez sur un méchant monstre</p>
             <p>Il est niveau <span id='niveau'></span></p>
             <p>Que voulez vous faire ?</p>
             <div id='quefaire'>
-                <button class="com" onclick='combat()'>Attaquer</button>
+                <button class="com haut" onclick='combat()'>Attaquer</button>
                 <button class="com" onclick='load()'>Fuir</button>
             </div>
             
             
-            <div id='attaque' >Vous attaquez en lançant un dé
+            <div id='attaque' ><br> Vous attaquez en lançant un dé
                 <div id='lance_de'></div>
                 <div id='resultat_combat'>...</div>
-                <button class="com" id="retour" onclick="load()">OK</button>
+                <button class="com haut" id="retour" onclick="load()">OK</button>
             </div>
         </div>
     </div>
