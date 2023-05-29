@@ -1,45 +1,16 @@
-function demarrage() {
-    document.getElementById("mon_titre").innerHTML = "J'ai modifié le titre";
-    document.getElementById("premier_paragraphe").innerHTML = "5*3="+(5*3);
-}
-
-
-function togg(){
-    var div = document.getElementById("d1");
-    if(div.style.display != "none"){
-      div.style.display = "none";
-    } else {
-      div.style.display = "block";
-    }
-};
-
-let x = 0;
-function add(){
-    x = x+1;
-    alert(x);
-}
-
-
-function verif(){
-  let test = document.querySelector('input').value;
-
-  if(test == ""){
-    alert("intr");
-  }else{
-    alert("fun");
-  }
-
-}
-
-
 function load(){
   if (document.getElementById('combat').style.display == 'none'){
     document.getElementById('combat').style.display = 'block';
     document.getElementById('jeu').style.display = 'none';
+    document.getElementById('attaque').style.display = 'none';
   }
   else{
     document.getElementById('combat').style.display = 'none';
     document.getElementById('jeu').style.display = 'block';
+    document.getElementById('attaque').style.display = 'none';
+    
+    document.getElementById("quefaire").style.display = 'block';
+    
   }
 }
 // LES DEPLACEMENTS
@@ -48,7 +19,7 @@ function dep_gauche(){
   if(salle === 2 || salle === 3){
     salle = salle -1;
     gcd(salle);
-    load();
+    getNiveau();
   }else
     alert("Deplacement impossible")
 }
@@ -57,7 +28,8 @@ function dep_droite(){
   if(salle === 1 || salle === 2){
     salle = salle +1;
     gcd(salle);
-    load();
+    
+    getNiveau();
   }else
     alert("Deplacement impossible")
     
@@ -78,7 +50,7 @@ function dep_haut(){
     etage = etage +1;
     document.getElementById("pos_etage").innerHTML = etage;
     
-    load();
+    getNiveau();
     //window.location.href = "./quest_regles.html";
   }else
     alert("Deplacement impossible")
@@ -88,7 +60,8 @@ function dep_bas(){
   if(etage>1){
     etage = etage -1;
     document.getElementById("pos_etage").innerHTML = etage;
-    load();
+    
+    getNiveau();
   }else
     alert("Deplacement impossible")
 }
@@ -97,23 +70,63 @@ function aleatoire() {
   return Math.floor(Math.random() * 5)+1;
 }
 
-var niveau;
+const button = document.getElementById('bouton_attaque');
+var niveau_monstre;
+
 function getNiveau(){
   load();
-  var niveau = aleatoire();
-  document.getElementById("niveau").innerHTML = niveau;
-  return niveau;
+  niveau_monstre = aleatoire();
+  document.getElementById('niveau').innerHTML = niveau_monstre;
+  afficher_bourse();
 }
 
-function combat(niveau) {
-  document.getElementById("attaque").innerHTML = "Vous attaquez";
-  loading();
+var gemme_maudite = "maudite";
+var gemme_attaque = "attaque";
+var liste_bourse = [gemme_maudite, gemme_maudite, gemme_maudite, gemme_maudite, gemme_attaque, gemme_attaque, gemme_attaque];
+
+function combat(liste_bourse) {
+  document.getElementById('attaque').style.display = 'block';
+  document.getElementById('quefaire').style.display = 'none';
+  document.getElementById('niveau').innerHTML = niveau_monstre;
+  var nombre = Math.floor(Math.random() * 5);
+
+  document.getElementById('pioche').innerHTML = nombre;
+  if(nombre >= niveau_monstre){
+    document.getElementById('resultat_combat').innerHTML = 'Vous gagnez';
+    liste_bourse.push(gemme_attaque);
+  }else{
+    document.getElementById('resultat_combat').innerHTML = 'Vous perdez';
+    liste_bourse.push( gemme_maudite);
+  }
+
+  
 }
-function loading(){
-  if (document.getElementById('attaque').style.display == 'none'){
-    document.getElementById('attaque').style.display = 'block';
-  }
-  else{
-    document.getElementById('attaque').style.display = 'none';
-  }
+
+
+
+
+function pioche(liste_bourse, niveau_monstre){
+  bloque = 0;
+  valide = 0;
+  var place;
+  do {
+    place = aleatoire()-1;
+    if(liste_bourse.get(place) === gemme_attaque)
+      valide = valide + 1;
+    else{
+      bloque = bloque + 1;
+    }
+    
+  } while (bloque<5 || valide < niveau_monstre);
+  
+  return valide;
+}
+
+
+function afficher_bourse(){
+  var texte = "";
+  liste_bourse.forEach(element => {
+    texte = texte + element + ", ";
+  });
+  document.getElementById("bourse").innerHTML = texte;
 }

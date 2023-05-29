@@ -27,14 +27,18 @@
         <div class="bloc">
             <img src="./images/monstre.png" alt="monstre" class="img_monstre">
             <p>Vous tombez sur un méchant monstre</p>
-            <p>il est niveau <div id="niveau"></div> et de type <div>...</div></p>
+            <p>Il est niveau <span id='niveau'></span></p>
+            <div>votre bourse : </br><span id='bourse'></span></div>
             <p>Que voulez vous faire ?</p>
+            <div id='quefaire'>
+                <button class="com" onclick='combat()' id="bouton_attaque">Attaquer</button>
+                <button class="com" onclick='load()'>Fuir</button>
+            </div>
             
-            <button class="com" onclick="combat()">Attaquer</button>
-            <button class="com" onclick="load()">Fuir</button>
-
             
-            <div id="attaque" >Vous attaquez
+            <div id='attaque' >Vous attaquez
+                <div>Vous piochez <span id='pioche'>..</span> gemmes d'attaque.</div>
+                <div id='resultat_combat'>...</div>
                 <button id="retour" onclick="load()">OK</button>
             </div>
         </div>
